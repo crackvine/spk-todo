@@ -1,0 +1,40 @@
+{
+  "name": "spk-todo",
+  "version": "1.0.0",
+  "description": "TODO LIST using Typescript, TypeORM, Express, Postgres",
+  "main": "index.js",
+  "scripts": {
+    "infra:up": "docker-compose -f docker/docker-compose.yml up -d",
+    "infra:down": "docker-compose -f docker/docker-compose.yml down",
+    "build": "tsc",
+    "preserve": "npm run build",
+    "serve": "cross-env NODE_ENV=development concurrently \"tsc --watch\" \"nodemon -q dist/index.js\"",
+    "prestart": "npm run build",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crackvine/spk-todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crackvine/spk-todo/issues"
+  },
+  "homepage": "https://github.com/crackvine/spk-todo#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.7",
+    "concurrently": "^6.4.0",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0"
+  }
+}
